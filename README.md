@@ -1,6 +1,17 @@
 # About
 
-This project is designed to test rendering speed a React / Flux app with ImmutableJS data store and React.PureComponents that has thousands (N) of entry-level React components.  Since all React.PureComponent instances are entry-level, this app can monitor the overhead associated with checking N React.PureComponent instances on each render()
+This project is designed to test rendering speed a React / Flux app with an ImmutableJS data store and React.PureComponents.  The view is thousands (N) of entry-level React components.  Since all React.PureComponent instances are entry-level, this app can monitor the overhead associated with checking N React.PureComponent instances on each render().  
+
+All benchmarks are from a rMBP 13" (late 2013) in Chrome 55.0.2883.95 (64-bit)
+
+## Branches
+
+### master
+- uses Immutable.OrderedMap for the store. Supports add() and addN() actions
+- when compiled for production it was able to handle the add() task with no noticeable slow down with about 6k items in the store. When compiled for debug, only about 1.5k items in store. 
+
+### list
+- will use Immutable.List for the store.  Will support unshift() action to test for fringe case when diff between virtualDOM and realDOM is almost 100%
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

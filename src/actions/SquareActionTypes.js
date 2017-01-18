@@ -1,0 +1,7 @@
+const ActionTypes = {
+  PREPEND_SQUARE: 'PREPEND_SQUARE',
+  ADD_SQUARE: 'ADD_SQUARE',
+  ADD_SQUARES: 'ADD_SQUARES',
+  SELECT_TODO: 'SELECT_SQUARE',
+};
+export default ActionTypes;

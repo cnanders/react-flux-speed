@@ -1,6 +1,6 @@
 # About
 
-This project is designed to test rendering speed a Flux app with an ImmutableJS data store and React.PureComponents views.  The view is thousands (N) of entry-level React components.  Since all React.PureComponent instances are entry-level, this app can monitor the overhead associated with checking N React.PureComponent instances on each render().  
+This project is designed to test rendering speed a Flux app with an ImmutableJS data store and React.PureComponent views.  The entry-level view contains N (N > 1000) direct decendent React.PureComponent instances.  Since all React.PureComponent instances are entry-level, this app can monitor the overhead associated with checking N React.PureComponent instances on each render().  
 
 All benchmarks are from a rMBP 13" (late 2013) in Chrome 55.0.2883.95 (64-bit)
 

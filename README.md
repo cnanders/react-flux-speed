@@ -1,3 +1,7 @@
+# About
+
+This project is designed to test rendering speed a React / Flux app with ImmutableJS data store and React.PureComponents that has thousands (N) of entry-level React components.  Since all React.PureComponent instances are entry-level, this app can monitor the overhead associated with checking N React.PureComponent instances on each render()
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

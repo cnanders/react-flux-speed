@@ -15,7 +15,7 @@ class SquareStore extends ReduceStore {
   }
 
   getInitialState () {
-    return Immutable.OrderedMap()
+    return Immutable.List()
   }
 
   reduce (state, action) {
@@ -26,23 +26,32 @@ class SquareStore extends ReduceStore {
 	  switch (action.type) {
 
       case SquareActionTypes.PREPEND_SQUARE:
-				var stateNew;
-				var n;
-				for (n = 0; n < 10; n++)
-    		{	
-
-				}
-				return state;
+        
+				const id = Counter.increment()
+				var stateNew = state.unshift(
+					new Square(
+						{
+          		id,
+		  				color: action.color,
+		  				selected: false
+        		}
+					)
+				);
+				return stateNew;
 
       case SquareActionTypes.ADD_SQUARE:
         // Don't add todos with no text.
         
         const id = Counter.increment()
-        var stateNew = state.set(id, new Square({
-          id,
-		  		color: action.color,
-		  		selected: false
-        }));
+        var stateNew = state.push(
+					new Square(
+						{
+          		id,
+		  				color: action.color,
+		  				selected: false
+        		}
+					)
+				);
 
 				const timeEnd = performance.now();
 				const timeElapsed = Math.round((timeEnd - timeStart)*10)/10;
@@ -70,7 +79,6 @@ class SquareStore extends ReduceStore {
 			{
 				const id = Counter.increment();
 				return [
-					id, // key
 					{
 						id: id,
 						color: Utils.getRandomColor(),

@@ -12,23 +12,38 @@ class SquareStore extends ReduceStore {
   // Registers store to call reduce() when the dispatcher dispatches 
   constructor () {
     super(AppDispatcher)
+		this.timeStart = performance.now();
+
   }
 
   getInitialState () {
     return Immutable.List()
   }
 
+	resetPerformance()
+	{
+		this.timeStart = performance.now();
+	}
+	logElapsedTime()
+	{
+			this.timeEnd = performance.now();
+			const timeElapsed = Math.round((this.timeEnd - this.timeStart)*10)/10;
+			console.log('Elapsed time: ' + timeElapsed + ' ms');
+	}
+
   reduce (state, action) {
     
-		const timeStart = performance.now();
+		var id;
+		var stateNew;
+		this.resetPerformance();
 		console.log('SquareStore.reduce() ' + action.type);
    
 	  switch (action.type) {
 
       case SquareActionTypes.PREPEND_SQUARE:
         
-				const id = Counter.increment()
-				var stateNew = state.unshift(
+				id = Counter.increment();
+				stateNew = state.unshift(
 					new Square(
 						{
           		id,
@@ -37,13 +52,15 @@ class SquareStore extends ReduceStore {
         		}
 					)
 				);
+
+				this.logElapsedTime();
 				return stateNew;
 
       case SquareActionTypes.ADD_SQUARE:
         // Don't add todos with no text.
         
-        const id = Counter.increment()
-        var stateNew = state.push(
+        id = Counter.increment();
+        stateNew = state.push(
 					new Square(
 						{
           		id,
@@ -53,9 +70,7 @@ class SquareStore extends ReduceStore {
 					)
 				);
 
-				const timeEnd = performance.now();
-				const timeElapsed = Math.round((timeEnd - timeStart)*10)/10;
-				console.log('SquareStore.reduce() ' + action.type + ' elapsed time: ' + timeElapsed);
+				this.logElapsedTime();
 				return stateNew;
       
       case SquareActionTypes.SELECT_SQUARE:
@@ -77,18 +92,19 @@ class SquareStore extends ReduceStore {
 			_.range(action.n), // [1 2 ... n] 
 			function(num)
 			{
-				const id = Counter.increment();
-				return [
-					{
-						id: id,
-						color: Utils.getRandomColor(),
-						selected: false
-					} // value
-				]
+				id = Counter.increment();
+				return {
+					id,
+					color: Utils.getRandomColor(),
+					selected: false
+				} // value
+
 			}
 		);
 
-		 return state.concat(squares);
+		 stateNew = state.concat(squares);
+		 this.logElapsedTime();
+		 return stateNew;
 
       default:
         return state

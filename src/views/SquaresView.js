@@ -6,6 +6,7 @@ import key from 'keymaster';
 function bindKeyboardEvents () {
 	key('a', () => {SquareActions.addSquare()});
 	key('b', () => {SquareActions.addSquares(50)});
+	key('c', () => {SquareActions.prependSquare()});
 }
 
 class SquaresView extends React.PureComponent 
@@ -42,11 +43,13 @@ class SquaresView extends React.PureComponent
 			<div>
 				<div>
 					{
-					[...this.props.squares.values()].map(square => (
-						<Square key={square.id} 
+					[...this.props.squares.values()].map(
+						square => (
+							<Square key={square.id} 
 								square={square}
 							/>
-						))
+						)
+					)
 					}
 				</div>
 				<div className={this.classButtons}>
@@ -57,13 +60,18 @@ class SquaresView extends React.PureComponent
 						>
 							Add Square (a)
 						</button>
-					</p>
-					<p>
+					
 						<button onClick={ 
 									() => {this.props.onAddSquaresClick(500)}
 								}
 						>
 							Add Squares (b)
+						</button>
+						<button onClick={ 
+									() => {this.props.onPrependSquareClick()}
+								}
+						>
+							Prepend Square (c)
 						</button>
 					</p>
 				</div>

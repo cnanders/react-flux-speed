@@ -1,11 +1,11 @@
-import Immutable from 'immutable'
+//import Immutable from 'immutable'
 import { ReduceStore } from 'flux/utils'
 import SelectionActionTypes from '../actions/SelectionActionTypes'
 import AppDispatcher from './AppDispatcher'
-import Counter from './Counter'
+//import Counter from './Counter'
 import Selection from './Selection'
-import _ from 'underscore'
-import Utils from '../utils/Utils'
+//import _ from 'underscore'
+//import Utils from '../utils/Utils'
 
 class SelectionStore extends ReduceStore {
 
@@ -16,25 +16,31 @@ class SelectionStore extends ReduceStore {
     }
 
     getInitialState() {
-        return Selection
+        return new Selection();
     }
 
-
     reduce(state, action) {
-        var id
         var stateNew
-        this.resetPerformance()
-        console.log('SelectionStore.reduce() ' + action.type)
-
+        console.log('SelectionStore reduce() ' + action.type);
         switch (action.type) {
             case SelectionActionTypes.START_SELECTION:
+
+                //console.log(action.event);
+                //console.log('screen: (' + action.event.screenX + ',' + action.event.screenY + ')');
+                //console.log('client: (' + action.event.clientX + ',' + action.event.clientY + ')');
+                //console.log('page: (' + action.event.pageX + ',' + action.event.pageY + ')');
+                //return state;
                 stateNew = state.set('show', true);
-                stateNew = state.set('x', action.x);
-                return stateNew.set('y', action.y);
+                stateNew = stateNew.set('pivotX', action.x);
+                stateNew = stateNew.set('pivotY', action.y);
+                stateNew = stateNew.set('mouseX', action.x);
+                stateNew = stateNew.set('mouseY', action.y);
+                return stateNew;
 
             case SelectionActionTypes.EXPAND_SELECTION:
-                stateNew = state.set('width', action.x - state.x);
-                return stateNew.set('height', state.y - action.y);
+                stateNew = state.set('mouseX', action.x);
+                stateNew = stateNew.set('mouseY', action.y);
+                return stateNew;
 
             case SelectionActionTypes.END_SELECTION:
                 return state.set('show', false);

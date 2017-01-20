@@ -1,7 +1,6 @@
 import SelectionActionTypes from './SelectionActionTypes';
 import AppDispatcher from '../data/AppDispatcher';
-import Utils from '../utils/Utils';
-
+//import Utils from '../utils/Utils';
 
 const Actions = {
   
@@ -14,7 +13,7 @@ const Actions = {
 	  	AppDispatcher.dispatch({ 
 			type: SelectionActionTypes.START_SELECTION,
 		  	x,
-		  	y
+			y
 		});  
   	},
 
@@ -24,6 +23,8 @@ const Actions = {
 	 */
 	expandSelection(x, y)
 	{
+		console.log(x);
+		console.log(y);
 		AppDispatcher.dispatch({ 
 			type: SelectionActionTypes.EXPAND_SELECTION,
 		  	x,

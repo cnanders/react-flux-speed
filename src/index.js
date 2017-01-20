@@ -8,7 +8,7 @@
  */
 
 //import SquaresContainer from './containers/SquaresContainer';
-import MainView from './views/MainView';
+import MainContainer from './containers/MainContainer';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Perf from 'react-addons-perf';
@@ -31,7 +31,7 @@ TodoActions.addTodo('Finish this tutorial');
 
 // Squares
 
-ReactDOM.render(<MainView />, document.getElementById('root'));
+ReactDOM.render(<MainContainer />, document.getElementById('root'));
 import SquareActions from './actions/SquareActions';
 
 SquareActions.addSquare();

@@ -1,3 +1,8 @@
 div.buttons {
 	clear: both;
 }
+
+body {
+	margin: 0;
+	padding: 0;
+}

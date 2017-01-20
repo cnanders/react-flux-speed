@@ -1,10 +1,10 @@
-import SelectionView from '../views/SelectionView';
+import MainView from '../views/MainView';
 import {Container} from 'flux/utils';
 import SelectionStore from '../data/SelectionStore';
 import SelectionActions from '../actions/SelectionActions';
 import React from 'react';
 
-class SelectionContainer extends React.Component
+class MainContainer extends React.Component
 {
 
 	static getStores()
@@ -17,12 +17,14 @@ class SelectionContainer extends React.Component
 	{
 		return {
 			selection: SelectionStore.getState(),
+			expandSelection: SelectionActions.expandSelection,
+			endSelection: SelectionActions.endSelection,
 		};
 	}
 	render()
 	{
-		return <SelectionView {...this.state} />
+		return <MainView {...this.state} />
 	}
 }
 
-export default Container.create(SelectionContainer);
+export default Container.create(MainContainer);

@@ -49,8 +49,7 @@ class Square extends React.PureComponent
 {
 	render()
 	{
-		const height = 10;
-		const width = 10;
+		
 		const opacity = this.props.square.selected ? 1 : 0.6;
 		//const strokeWidth = 6;
 		//const stroke = this.props.square.selected ? '#444' : this.props.square.color;

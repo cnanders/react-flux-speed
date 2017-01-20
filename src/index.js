@@ -7,7 +7,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import SquaresContainer from './containers/SquaresContainer';
+//import SquaresContainer from './containers/SquaresContainer';
+import MainView from './views/MainView';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Perf from 'react-addons-perf';
@@ -30,11 +31,11 @@ TodoActions.addTodo('Finish this tutorial');
 
 // Squares
 
-ReactDOM.render(<SquaresContainer />, document.getElementById('root'));
+ReactDOM.render(<MainView />, document.getElementById('root'));
 import SquareActions from './actions/SquareActions';
 
 SquareActions.addSquare();
-SquareActions.addSquares(100);
+SquareActions.addSquares(5);
 /*
 var n;
 var length = 1000;

@@ -47,6 +47,8 @@ class SquaresContainer extends React.Component
 			onAddSquareClick: SquareActions.addSquare,
 			onAddSquaresClick: SquareActions.addSquares,
 			onPrependSquareClick: SquareActions.prependSquare,
+			onSquareClick: SquareActions.selectSquare,
+			blah: SquareActions.blah,
 			//onDeleteTodo: TodoActions.deleteTodo,
 			//onToggleTodo: TodoActions.toggleTodo,
 		};

@@ -1,0 +1,6 @@
+const ActionTypes = {
+  START_SELECTION: 'START_SELECTION',
+  EXPAND_SELECTION: 'EXPAND_SELECTION',
+  END_SELECTION: 'END_SELECTION',
+};
+export default ActionTypes;

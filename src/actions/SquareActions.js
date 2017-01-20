@@ -38,7 +38,13 @@ const Actions = {
 	  AppDispatcher.dispatch({
 		  type: SquareActionTypes.ADD_SQUARES,
 		  n: n 
-	  })
+	  });
+  },
+  blah()
+  {
+      AppDispatcher.dispatch({
+		    type: SquareActionTypes.BLAH
+	    });
   }
 };
 

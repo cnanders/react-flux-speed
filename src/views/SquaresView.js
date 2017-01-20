@@ -1,27 +1,15 @@
 import React from 'react';
-import SquareActions from '../actions/SquareActions';
-import key from 'keymaster';
-
-
-function bindKeyboardEvents () {
-	key('a', () => {SquareActions.addSquare()});
-	key('b', () => {SquareActions.addSquares(50)});
-	key('c', () => {SquareActions.prependSquare()});
-}
+//import SelecionView from './SelectionView';
 
 class SquaresView extends React.PureComponent 
 {
-	
-	
-	
 	constructor(props) {
 		super(props)
 		this.classButtons = 'buttons';
 	}
 	
 	componentWillMount () {
-		console.log('SquaresView WillMount()');
-		bindKeyboardEvents();
+		console.log('Squares WillMount()');
 	}
 
 	componentWillUpdate ()
@@ -33,50 +21,26 @@ class SquaresView extends React.PureComponent
 	{
 		this.timeEnd = performance.now();
 		const timeElapsed = Math.round((this.timeEnd - this.timeStart) * 10)/10;
-		console.log('SquaresView render elapsed time ' + timeElapsed);
+		console.log('Squares render elapsed time ' + timeElapsed);
 	}
-	
 
 	render()
 	{
+
 		return (
-			<div>
-				<div>
-					{
-					[...this.props.squares.values()].map(
-						square => (
-							<Square key={square.id} 
-								square={square}
-							/>
-						)
-					)
-					}
-				</div>
-				<div className={this.classButtons}>
-					<p>
-						<button onClick={ 
-									() => {this.props.onAddSquareClick()}
-								}
-						>
-							Add Square (a)
-						</button>
-					
-						<button onClick={ 
-									() => {this.props.onAddSquaresClick(500)}
-								}
-						>
-							Add Squares (b)
-						</button>
-						<button onClick={ 
-									() => {this.props.onPrependSquareClick()}
-								}
-						>
-							Prepend Square (c)
-						</button>
-					</p>
-				</div>
-				
-			</div>
+			<g>
+			{
+			this.props.squares.map(
+				(square, i) => (
+					<Square key={square.id} 
+							square={square}
+							index={i}
+							onSquareClick={this.props.onSquareClick}
+					/>		
+				)
+			)
+			}
+			</g>
 		)
 	}		
 }
@@ -85,74 +49,32 @@ class Square extends React.PureComponent
 {
 	render()
 	{
-		const style = {
-			width: 30,
-			height: 20,
-			fontSize: '8px',
-			border: '1px solid #aaa',
-			backgroundColor: this.props.square.color,
-			float: 'left'
-		};
-		
-		const className = this.props.square.selected ? "selected" : "";
+		const height = 10;
+		const width = 10;
+		const opacity = this.props.square.selected ? 1 : 0.6;
+		//const strokeWidth = 6;
+		//const stroke = this.props.square.selected ? '#444' : this.props.square.color;
 
+		const stroke = '#444';
+		const strokeWidth = this.props.square.selected ? 1 : 0;
 		return (
-			<div 	style={style}
-					className={className}
-			>
-				{this.props.square.id}
-
-			</div>
+			<rect
+				x={this.props.square.x}
+				y={this.props.square.y}
+				height={this.props.square.height}
+				width={this.props.square.width}
+				fill={this.props.square.color}
+				fillOpacity={opacity}
+				stroke={stroke}
+				strokeWidth={strokeWidth}
+				strokeOpacity={opacity}
+				onClick={
+					() => {this.props.onSquareClick(this.props.index)}
+				}
+			/>
 		);
 	}
 }
-/*
-function SquaresView(props) {
-  return (
-    <div>
-      {
-		  [...props.squares.values()].map(square => (
-          	<Square key={square.id} 
-		  			square={square}
-				/>
-        	))
-		}
-		<p>
-			<button onClick={ 
-						() => {props.onAddSquareClick()}
-					}
-			>
-				Add Square
-			</button>
-		</p>
-    </div>
-  );
-}
 
-function Square(props)
-{
-	const style = {
-		width: 30,
-		height: 20,
-		fontSize: '8px',
-		border: '1px solid #aaa',
-		backgroundColor: props.square.color,
-		float: 'left'
-	};
-	
-	const className = props.square.selected ? "selected" : "";
-
-	return (
-		<div 	style={style}
-				className={className}
-		>
-			{props.square.id}
-
-		</div>
-	);
-}
-
-
-*/
 
 export default SquaresView;

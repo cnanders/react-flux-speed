@@ -40,6 +40,10 @@ class SquareStore extends ReduceStore {
    
 	  switch (action.type) {
 
+			case SquareActionTypes.BLAH:
+				console.log('blah!');
+				return state;
+				break;
       case SquareActionTypes.PREPEND_SQUARE:
         
 				id = Counter.increment();
@@ -48,7 +52,11 @@ class SquareStore extends ReduceStore {
 						{
           		id,
 		  				color: action.color,
-		  				selected: false
+		  				selected: false,
+							x: Math.random() * 1000,
+							y: Math.random() * 500,
+							height: Math.random() * 10 + 30,
+							width: Math.random() * 10 + 30
         		}
 					)
 				);
@@ -65,7 +73,11 @@ class SquareStore extends ReduceStore {
 						{
           		id,
 		  				color: action.color,
-		  				selected: false
+		  				selected: false,
+							x: Math.random() * 1000,
+							y: Math.random() * 500,
+							height: Math.random() * 10 + 30,
+							width: Math.random() * 10 + 30
         		}
 					)
 				);
@@ -74,9 +86,11 @@ class SquareStore extends ReduceStore {
 				return stateNew;
       
       case SquareActionTypes.SELECT_SQUARE:
-        return state.update(
+				console.log('SELECT' + action.id);
+				console.log(state);
+				return state.update(
           action.id,
-          square => square.set('selected', !square.selected)
+					square => {console.log(square); return square.set('selected', !square.selected);}
         )
 	 case SquareActionTypes.ADD_SQUARES:
 	 	 // Need to add a bunch.  
@@ -93,11 +107,15 @@ class SquareStore extends ReduceStore {
 			function(num)
 			{
 				id = Counter.increment();
-				return {
+				return new Square({
 					id,
 					color: Utils.getRandomColor(),
-					selected: false
-				} // value
+					selected: false,
+						x: Math.random() * 1000,
+							y: Math.random() * 500,
+							height: Math.random() * 10 + 30,
+							width: Math.random() * 10 + 30
+				}) // value
 
 			}
 		);

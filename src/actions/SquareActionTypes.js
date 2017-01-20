@@ -2,6 +2,7 @@ const ActionTypes = {
   PREPEND_SQUARE: 'PREPEND_SQUARE',
   ADD_SQUARE: 'ADD_SQUARE',
   ADD_SQUARES: 'ADD_SQUARES',
-  SELECT_TODO: 'SELECT_SQUARE',
+  SELECT_SQUARE: 'SELECT_SQUARE',
+  BLAH: 'BLAH',
 };
 export default ActionTypes;

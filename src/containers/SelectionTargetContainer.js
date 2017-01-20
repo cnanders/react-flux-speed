@@ -18,8 +18,6 @@ class SelectionTargetContainer extends React.Component
 		return {
 			selection: SelectionStore.getState(),
 			startSelection: SelectionActions.startSelection,
-			expandSelection: SelectionActions.expandSelection,
-			endSelection: SelectionActions.endSelection,
 		};
 	}
 	render()

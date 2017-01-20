@@ -35,6 +35,39 @@ class SquareStore extends ReduceStore {
     console.log('SquareStore.reduce() ' + action.type)
 
     switch (action.type) {
+
+
+      case SquareActionTypes.SELECT_INCLUDED_SQUARES:
+        
+        state = state.map(
+            (square) => {
+                if (Utils.squareIsInSelection(square, action.selection))
+                {
+                    if (!square.selected)
+                    {
+                        return square.set('selected', true); 
+                    } 
+                    else
+                    {
+                        return square;
+                    }     
+                }
+                else
+                {
+                    if (square.selected)
+                    {
+                        return square.set('selected', false);
+                    }
+                    else {
+                        return square;
+                    }
+                }
+            }
+
+
+        )
+        return state;
+
       case SquareActionTypes.BLAH:
         console.log('blah!')
         return state
@@ -109,7 +142,7 @@ class SquareStore extends ReduceStore {
               y: Math.random() * 500,
               height: Math.random() * 10 + 30,
               width: Math.random() * 10 + 30
-            }) // value
+            }) // valuek
 
           }
         )
@@ -118,6 +151,7 @@ class SquareStore extends ReduceStore {
         this.logElapsedTime()
         return stateNew
 
+    
       default:
         return state
     }

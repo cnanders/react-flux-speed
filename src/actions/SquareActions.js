@@ -45,6 +45,23 @@ const Actions = {
       AppDispatcher.dispatch({
 		    type: SquareActionTypes.BLAH
 	    });
+  },
+
+  /**
+   * Find all squares within the seleciton region bound by pivotX,Y, mouseX,Y
+   * and set Square.selected = true for each
+   * @param {Selection | Object} selection - see Selection.
+   * @param {Number} selection.pivotX - see Selection.pivotX
+   * @param {Number} selection.pivotY - see Selection.pivotY
+   * @param {Number} selection.mouseX - see Selection.mouseX
+   * @param {Number} selection.mouseY - see Selection.mouseY
+   */
+  selectIncludedSquares(selection)
+  {
+      AppDispatcher.dispatch({
+		    type: SquareActionTypes.SELECT_INCLUDED_SQUARES,
+        selection
+	    });
   }
 };
 

@@ -4,5 +4,6 @@ const ActionTypes = {
   ADD_SQUARES: 'ADD_SQUARES',
   SELECT_SQUARE: 'SELECT_SQUARE',
   BLAH: 'BLAH',
+  SELECT_INCLUDED_SQUARES:'SELECT_INCLUDED_SQUARES',
 };
 export default ActionTypes;

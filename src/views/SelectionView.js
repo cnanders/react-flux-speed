@@ -19,53 +19,21 @@ class SelectionView extends React.PureComponent
             return null;
         }
 
-        const pivotX = this.props.selection.pivotX;
-        const pivotY = this.props.selection.pivotY;
-        const mouseX = this.props.selection.mouseX;
-        const mouseY = this.props.selection.mouseY;
-
-        var x;
-        var y;
-        var width;
-        var height;
-
-        if (pivotX <= mouseX)
-        {
-            x = pivotX;
-            width = mouseX - pivotX;
-        }
-        else
-        {
-            x = mouseX;
-            width = pivotX - mouseX;
-        }
-
-        if (pivotY <= mouseY)
-        {
-            y = pivotY;
-            height = mouseY - pivotY;
-        }
-        else
-        {
-            y = mouseY;
-            height = pivotY - mouseY;
-        }
+        const coords = Utils.selectionToCoords(this.props.selection);
         
 		return (
 			<rect
-				x={x}
-				y={y}
-				height={height}
-				width={width}
+				x={coords.x}
+				y={coords.y}
+				height={coords.height}
+				width={coords.width}
 				fill={this.fill}
 				fillOpacity={this.opacity}
 				stroke={this.stroke}
 				strokeWidth={this.strokeWidth}
 				strokeOpacity={this.opacity}
 			/>
-		);
-       
-        
+		);        
 	}	
 }
 

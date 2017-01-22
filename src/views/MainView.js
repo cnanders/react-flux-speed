@@ -29,7 +29,7 @@ class MainView extends React.PureComponent
     {
         if (this.props.selection.show)
         {
-            this.props.expandSelection(event.clientX, event.clientY);
+            this.props.expandSelection(event.pageX, event.pageY);
 			this.props.selectIncludedSquares(
 				this.props.selection
 			);

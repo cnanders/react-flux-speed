@@ -31,7 +31,29 @@ class Utils {
    */
   static selectionToCoords(s) 
   {
+      // Takes between 5 us and 10 us on rMBP.  Pretty sure it is optimized
+
+      //var timeStart = performance.now();
       var x, y, width, height;
+
+      /*
+      var out;
+      out = {
+        x: s.pivotX <= s.mouseX ? s.pivotX : s.mouseX,
+        width: s.pivotX <= s.mouseX ? s.mouseX - s.pivotX : s.pivotX - s.mouseX,
+        y: s.pivotY <= s.mouseY ? s.pivotY : s.mouseY,
+        height: s.pivotY <= s.mouseY ? s.mouseY - s.pivotY : s.pivotY - s.mouseY
+      }
+
+      var timeEnd = performance.now();
+      var timeElapsed = timeEnd - timeStart;
+      console.log('selectionToCoords elapsed time: ' + timeElapsed);
+
+
+      return out;
+      */
+      
+     
 
       if (s.pivotX <= s.mouseX)
       {
@@ -54,12 +76,18 @@ class Utils {
           y = s.mouseY;
           height = s.pivotY - s.mouseY;
       } 
+
+      // var timeEnd = performance.now();
+      // var timeElapsed = timeEnd - timeStart;
+      // console.log('selectionToCoords elapsed time: ' + timeElapsed + ' ms');
+
       return {
         x,
         y,
         width,
         height
-      }   
+      } 
+      
   }
 
   /**
@@ -72,6 +100,8 @@ class Utils {
     
     var coords = Utils.selectionToCoords(selection);
     
+    //var timeStart = performance.now();
+
     var leftEdgeInSelection; 
     var rightEdgeInSelection; 
     var topEdgeInSelection; 
@@ -93,6 +123,9 @@ class Utils {
 
     yIn = topEdgeInSelection | bottomEdgeInSelection;
     
+    // var timeEnd = performance.now();
+    // var timeElapsed = timeEnd - timeStart;
+    // console.log('squareIsInSelection elapsed time: ' + timeElapsed);
     return xIn & yIn;
   }
 

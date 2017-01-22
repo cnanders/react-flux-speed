@@ -12,7 +12,7 @@ function getStores() {
 function getState() {
   return {
     todos: AppStore.getState(),
-	onDeleteTodo: TodoActions.deleteTodo,
+	  onDeleteTodo: TodoActions.deleteTodo,
     onToggleTodo: TodoActions.toggleTodo,
   };
 }

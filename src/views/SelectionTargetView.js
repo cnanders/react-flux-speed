@@ -19,14 +19,16 @@ class SelectionTargetView extends React.PureComponent
 	
     onClick (event)
     {
-        //console.log(event);
+        //this.props.unselectAll();
+
+		console.log('SelectionTargetView(). onClick()');
         //Utils.logMouseEvent(event);
         //this.props.startSelection(event.clientX, event.clientY);
     }
 
     onMouseDown (event)
     {
-        //console.log(event);
+       //console.log(event);
         this.props.startSelection(event.pageX, event.pageY);
     }
     
@@ -44,6 +46,9 @@ class SelectionTargetView extends React.PureComponent
                 onMouseDown={
                     this.onMouseDown
                 }
+				onClick={
+					this.onClick
+				}
 			/>
 		);
 	}	

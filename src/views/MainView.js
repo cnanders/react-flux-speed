@@ -20,20 +20,33 @@ class MainView extends React.PureComponent
 	
 	onMouseUp (event)
     {
-        if (this.props.selection.show) 
+	
+
+		if (this.props.selection.show) 
 		{
 			this.props.endSelection();
+		}		
+		else if (this.props.move.moving)
+		{
+			this.props.endMove();
 		}
     }
     onMouseMove (event)
     {
-        if (this.props.selection.show)
+		if (this.props.selection.show)
         {
             this.props.expandSelection(event.pageX, event.pageY);
 			this.props.selectIncludedSquares(
 				this.props.selection
 			);
-        }
+        } 
+		else if (this.props.move.moving)
+		{
+			this.props.continueMove(event.pageX, event.pageY);
+			// this.props.moveSelectedSquares(
+			// 	this.props.move
+			// );
+		}
     }
 
 	// viewBox={"0 0 1000 500"}

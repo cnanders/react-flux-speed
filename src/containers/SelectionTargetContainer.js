@@ -2,6 +2,7 @@ import SelectionTargetView from '../views/SelectionTargetView';
 import {Container} from 'flux/utils';
 import SelectionStore from '../data/SelectionStore';
 import SelectionActions from '../actions/SelectionActions';
+import SquareActions from '../actions/SquareActions';
 import React from 'react';
 
 class SelectionTargetContainer extends React.Component
@@ -18,6 +19,7 @@ class SelectionTargetContainer extends React.Component
 		return {
 			selection: SelectionStore.getState(),
 			startSelection: SelectionActions.startSelection,
+			unselectAll: SquareActions.unselectAll
 		};
 	}
 	render()

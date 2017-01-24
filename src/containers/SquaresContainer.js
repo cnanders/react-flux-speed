@@ -2,6 +2,7 @@ import SquaresView from '../views/SquaresView';
 import {Container} from 'flux/utils';
 import SquareStore from '../data/SquareStore';
 import SquareActions from '../actions/SquareActions';
+import MoveActions from '../actions/MoveActions';
 import React from 'react';
 /*
 function getStores() {
@@ -48,7 +49,9 @@ class SquaresContainer extends React.Component
 			onAddSquaresClick: SquareActions.addSquares,
 			onPrependSquareClick: SquareActions.prependSquare,
 			onSquareClick: SquareActions.selectSquare,
+			startMove: MoveActions.startMove,
 			blah: SquareActions.blah,
+			
 			//onDeleteTodo: TodoActions.deleteTodo,
 			//onToggleTodo: TodoActions.toggleTodo,
 		};

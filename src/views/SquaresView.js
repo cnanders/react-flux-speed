@@ -36,6 +36,7 @@ class SquaresView extends React.PureComponent
 							square={square}
 							index={i}
 							onSquareClick={this.props.onSquareClick}
+							startMove={this.props.startMove}
 					/>		
 				)
 			)
@@ -47,6 +48,23 @@ class SquaresView extends React.PureComponent
 
 class Square extends React.PureComponent
 {
+	
+	constructor(props) {
+		super(props)
+       	this.onClick = this.onClick.bind(this);
+        this.onMouseDown = this.onMouseDown.bind(this);
+	}
+
+	onMouseDown (event)
+    {
+        this.props.startMove(event.pageX, event.pageY);
+    }
+
+	onClick (event)
+	{
+		//this.props.onSquareClick(this.props.index)
+	}
+	
 	render()
 	{
 		
@@ -68,8 +86,12 @@ class Square extends React.PureComponent
 				strokeWidth={strokeWidth}
 				strokeOpacity={opacity}
 				onClick={
-					() => {this.props.onSquareClick(this.props.index)}
+					this.onClick
 				}
+				onMouseDown={
+					this.onMouseDown
+				}
+				
 			/>
 		);
 	}

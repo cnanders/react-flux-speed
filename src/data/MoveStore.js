@@ -25,15 +25,21 @@ class MoveStore extends ReduceStore {
         switch (action.type) {
             case MoveActionTypes.START_MOVE:
 				console.log('fjdskl');
-                stateNew = state.set('moving', true);
-                stateNew = stateNew.set('pivotX', action.x);
-                stateNew = stateNew.set('pivotY', action.y);
-                return stateNew;
+                state = state.set('moving', true);
+                state = state.set('pivotX', action.x);
+                state = state.set('pivotY', action.y);
+				state = state.set('currentX', action.x);
+                state = state.set('currentY', action.y);
+                return state
 			case MoveActionTypes.CONTINUE_MOVE:
                 stateNew = state.set('currentX', action.x);
                 stateNew = stateNew.set('currentY', action.y);
                 return stateNew;
             case MoveActionTypes.END_MOVE:
+				state = state.set('pivotX', 0);
+				state = state.set('pivotY', 0);
+				state = state.set('currentX', 0);
+				state = state.set('currentY', 0);
                 return state.set('moving', false);
             default:
                 return state;

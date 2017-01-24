@@ -38,11 +38,6 @@ class SquareStore extends ReduceStore {
 
       case SquareActionTypes.MOVE_SELECTED_SQUARES:
 
-        // ACCELERATION BAD.  NEED TO FIGURE THIS OUT.  CONSTANTLY UPDATING.  
-        // MAYBE we need to set a translation of a group around each square to properly handle this.
-        // During the drag and only change it at the end in the state.  Don't know.
-
-        /*
         var deltaX = action.move.currentX - action.move.pivotX;
         var deltaY = action.move.currentY - action.move.pivotY;
         var squareNew
@@ -60,7 +55,7 @@ class SquareStore extends ReduceStore {
                 }
             }
         );
-        */
+        
         return state;
 
       case SquareActionTypes.SELECT_INCLUDED_SQUARES:

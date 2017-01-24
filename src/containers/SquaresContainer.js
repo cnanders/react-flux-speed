@@ -1,5 +1,6 @@
 import SquaresView from '../views/SquaresView';
 import {Container} from 'flux/utils';
+import MoveStore from '../data/MoveStore';
 import SquareStore from '../data/SquareStore';
 import SquareActions from '../actions/SquareActions';
 import MoveActions from '../actions/MoveActions';
@@ -38,13 +39,15 @@ class SquaresContainer extends React.Component
 	static getStores()
 	{
 		return [
-			SquareStore
+			SquareStore,
+			MoveStore
 		]
 	}
 	static calculateState()
 	{
 		return {
 			squares: SquareStore.getState(),
+			move: MoveStore.getState(),
 			onAddSquareClick: SquareActions.addSquare,
 			onAddSquaresClick: SquareActions.addSquares,
 			onPrependSquareClick: SquareActions.prependSquare,

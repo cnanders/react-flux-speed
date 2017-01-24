@@ -27,19 +27,37 @@ class SquaresView extends React.PureComponent
 	render()
 	{
 
+		const deltaX = this.props.move.currentX - this.props.move.pivotX;
+		const deltaY = this.props.move.currentY - this.props.move.pivotY;
 		return (
 			<g>
 			{
 			this.props.squares.map(
-				(square, i) => (
-					<Square key={square.id} 
-							square={square}
-							index={i}
-							onSquareClick={this.props.onSquareClick}
-							startMove={this.props.startMove}
-					/>		
+				(square, i) => {
+					
+					if (square.selected)
+					{
+						var translate = "translate(" + deltaX + "," + deltaY + ")";
+					}
+					else
+					{
+						var translate = "";
+					}
+					return (
+						<g
+							transform={translate}
+						>
+						<Square key={square.id} 
+								square={square}
+								move={this.props.move}
+								index={i}
+								onSquareClick={this.props.onSquareClick}
+								startMove={this.props.startMove}
+						/>	
+						</g>	
+					)
+				}
 				)
-			)
 			}
 			</g>
 		)

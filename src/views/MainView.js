@@ -28,6 +28,9 @@ class MainView extends React.PureComponent
 		}		
 		else if (this.props.move.moving)
 		{
+			this.props.moveSelectedSquares(
+				this.props.move
+			);
 			this.props.endMove();
 		}
     }
@@ -43,9 +46,7 @@ class MainView extends React.PureComponent
 		else if (this.props.move.moving)
 		{
 			this.props.continueMove(event.pageX, event.pageY);
-			// this.props.moveSelectedSquares(
-			// 	this.props.move
-			// );
+			
 		}
     }
 

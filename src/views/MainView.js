@@ -3,6 +3,7 @@ import SquaresContainer from '../containers/SquaresContainer';
 import GuiContainer from '../containers/GuiContainer';
 import SelectionContainer from '../containers/SelectionContainer';
 import SelectionTargetContainer from '../containers/SelectionTargetContainer';
+import CountContainer from '../containers/CountContainer';
 
 
 /**
@@ -66,7 +67,8 @@ class MainView extends React.PureComponent
 					>
 					<SelectionTargetContainer />
 					<SquaresContainer />
-					<SelectionContainer/>					
+					<CountContainer />
+					<SelectionContainer/>
 				</svg>	
 				<GuiContainer />
 			</div>

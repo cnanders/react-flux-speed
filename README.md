@@ -13,6 +13,13 @@ All benchmarks are from a rMBP 13" (late 2013) in Chrome 55.0.2883.95 (64-bit)
 ### list
 - will use Immutable.List for the store.  Will support unshift() action to test for fringe case when diff between virtualDOM and realDOM is almost 100%
 
+### svg
+- moved to randomly placed SVG squares instead of <div>.  Added drag multi-select functionality
+
+### svg-move-a
+- added drag capability and a counter to show the number of elements
+
+## About
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
